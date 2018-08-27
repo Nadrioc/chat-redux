@@ -10,7 +10,7 @@ class MessageInput extends Component {
 
   handleSubmit = (event) =>{
     event.preventDefault();
-    this.props.addMessage({author: this.props.author, content: this.props.input_value });
+    this.props.addMessage(this.props.selected_channel.name,{author: this.props.author, content: this.props.input_value });
     this.props.handleMessageChange("");
   }
 
@@ -40,7 +40,8 @@ function mapDispatchToProps(dispatch) {
 function mapReduxStateToProps(reduxState) {
   return {
   input_value: reduxState.input_value,
-  author: reduxState.author
+  author: reduxState.author,
+  selected_channel: reduxState.selected_channel
   };
 }
 

@@ -6,13 +6,26 @@ import { setMessages } from '../actions';
 
 class MessageList extends Component {
 
-  componentDidMount() {
-    this.props.setMessages("Sam");
+  componentWillMount() {
+    this.props.setMessages(this.props.selected_channel.name);
   }
 
+  // componentDidMount() {
+  //   this.refresher = setInterval(this.props.setMessages(this.props.selected_channel.name), 5000);
+  // }
+
+  // // componentDidUpdate() {
+  // //   this.list.scrollTop = this.list.scrollHeight;
+  // // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.refresher);
+  // }
+
   renderList(){
-    if (this.props.messages.length >= 1){
-      return this.props.messages.map((message) => {
+
+    if (this.props.messages && this.props.messages.messages && this.props.messages.messages.length >= 1){
+      return this.props.messages.messages.map((message) => {
         return (
           <h2  key={message.content}>
             <Message message={message}/>
@@ -41,7 +54,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapReduxStateToProps(reduxState) {
   return {
-  messages: reduxState.messages
+  messages: reduxState.messages,
+  selected_channel: reduxState.selected_channel
   };
 }
 

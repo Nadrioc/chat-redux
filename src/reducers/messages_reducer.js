@@ -6,8 +6,9 @@ const messagesReducer = (state, action) => {
     case "SET_MESSAGES":
       return action.payload;
     case "ADD_MESSAGE":
-      console.log(state.messages)
-      return state.concat([action.payload]);
+      return Object.assign({}, state, {
+        messages: state.messages.concat([action.payload])
+      })
     default:
       return state;
   }

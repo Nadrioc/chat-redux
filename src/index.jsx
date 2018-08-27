@@ -14,20 +14,26 @@ import '../assets/stylesheets/application.scss';
 import usernameReducer from './reducers/username_reducer';
 import messagesReducer from './reducers/messages_reducer';
 import messagesInputReducer from './reducers/messages_input_reducer';
+import selectedChannelReducer from './reducers/selected_channel_reducer';
 
 // State and reducers
-const reducers = combineReducers({
-  author: usernameReducer,
-  messages: messagesReducer,
-  input_value: messagesInputReducer,
-});
+
+const identityReducer = (state = null) => state;
 
 const initialState = {
   messages: [],
   author: `anonymous${Math.floor(10 + (Math.random() * 90))}`,
-  // channels: ["general", "react", "paris"],
-  // selectedChannel: "general"
+  channels: [{name: "Sam", id: 1}, {name: "Nick", id: 2}],
+  selected_channel: {name: "Sam", id: 1}
 };
+
+const reducers = combineReducers({
+  author: identityReducer,
+  channels: identityReducer,
+  messages: messagesReducer,
+  selected_channel: selectedChannelReducer,
+  input_value: messagesInputReducer,
+});
 
 //Middlewares
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -42,4 +48,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// prompt("Please provide a username") ||
+//prompt("Please provide a username") ||
