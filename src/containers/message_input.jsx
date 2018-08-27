@@ -21,7 +21,7 @@ class MessageInput extends Component {
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.props.input_value} onChange={this.handleMessageChange} />
+        <input autoFocus type="text" value={this.props.input_value} onChange={this.handleMessageChange} />
         <button type="submit">Chat</button>
       </form>
     )

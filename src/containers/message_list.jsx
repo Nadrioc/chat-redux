@@ -37,8 +37,11 @@ class MessageList extends Component {
 
   render(){
     return (
-      <div className="app">
-        <div>{this.renderList()}</div>
+      <div>
+        <h2>{this.props.selected_channel.name}'s Channel</h2>
+        <div className="app">
+          <div>{this.renderList()}</div>
+        </div>
       </div>
     );
   }
