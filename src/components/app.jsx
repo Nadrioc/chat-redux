@@ -3,15 +3,15 @@ import MessageList from '../containers/message_list';
 import ChatroomList from '../containers/chatroom_list'
 import MessageInput from '../containers/message_input'
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="app">
       <div className="chatroom-select">
-        <ChatroomList />
+        <ChatroomList selected_channel={props.match.params.channel} />
       </div>
       <div className= "message-container">
-        <MessageList />
-        <MessageInput />
+        <MessageList selected_channel={props.match.params.channel}/>
+        <MessageInput selected_channel={props.match.params.channel}/>
       </div>
     </div>
   );

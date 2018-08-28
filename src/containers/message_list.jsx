@@ -7,11 +7,11 @@ import { setMessages } from '../actions';
 class MessageList extends Component {
 
   componentWillMount() {
-    this.props.setMessages(this.props.selected_channel.name);
+    this.props.setMessages(this.props.selected_channel);
   }
 
   // componentDidMount() {
-  //   this.refresher = setInterval(this.props.setMessages(this.props.selected_channel.name), 5000);
+  //   this.refresher = setInterval(this.props.setMessages(this.props.selected_channel), 5000);
   // }
 
   // // componentDidUpdate() {
@@ -38,7 +38,7 @@ class MessageList extends Component {
   render(){
     return (
       <div>
-        <h2>{this.props.selected_channel.name}'s Channel</h2>
+        <h2>{this.props.selected_channel}'s Channel</h2>
         <div className="app">
           <div>{this.renderList()}</div>
         </div>
@@ -58,7 +58,7 @@ function mapDispatchToProps(dispatch) {
 function mapReduxStateToProps(reduxState) {
   return {
   messages: reduxState.messages,
-  selected_channel: reduxState.selected_channel
+  // selected_channel: reduxState.selected_channel
   };
 }
 

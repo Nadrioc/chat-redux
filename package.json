@@ -24,16 +24,18 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "history": "^4.7.2",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-emojione": "^5.0.0",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.3.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode development --history-api-fallback",
     "lint": "eslint './src/**/*.js' './src/**/*.jsx'",
     "deploy": "webpack -p && gh-pages -d dist"
   }

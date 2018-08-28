@@ -19,17 +19,15 @@ export function handleMessageChange(input_value) {
   }
 }
 
-export function selectChannel(channel) {
- return {
-   type: 'SELECT_CHANNEL',
-   payload: channel
- }
-}
+// export function selectChannel(channel) {
+//  return {
+//    type: 'SELECT_CHANNEL',
+//    payload: channel
+//  }
+// }
 
 
 export function addMessage(channel, message) {
-
-  console.log('addMessage');
 
   const url = `${BASE_URL}/${channel}/messages`;
   const promise = fetch(url, {

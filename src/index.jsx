@@ -6,7 +6,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import logger from 'redux-logger'
 import promiseMiddleware from 'redux-promise';
-
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { createHistory as history } from 'history';
 
 // internal modules
 import App from './components/app';
@@ -22,16 +23,16 @@ const identityReducer = (state = null) => state;
 
 const initialState = {
   messages: [],
-  author: `anonymous${Math.floor(10 + (Math.random() * 90))}`,
+  author: prompt("Please provide a username") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   channels: [{name: "Sam", id: 1}, {name: "Nick", id: 2}],
-  selected_channel: {name: "Sam", id: 1}
+  // selected_channel: {name: "Sam", id: 1}
 };
 
 const reducers = combineReducers({
   author: identityReducer,
   channels: identityReducer,
   messages: messagesReducer,
-  selected_channel: selectedChannelReducer,
+  // selected_channel: selectedChannelReducer,
   input_value: messagesInputReducer,
 });
 
@@ -43,9 +44,14 @@ const store = createStore(reducers, initialState, middlewares);
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        <Route path="/:channel" component={App} />
+        <Redirect from="/" to="/Sam" />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
 
-//prompt("Please provide a username") ||
+//

@@ -9,7 +9,7 @@ class ChatroomList extends Component {
   renderList(){
     return this.props.channels.map((channel) => {
       return (
-        <Chatroom channel={channel} key={channel.id} />
+        <Chatroom channel={channel} key={channel.id} selected_channel={this.props.selected_channel} />
       )
     });
   }
